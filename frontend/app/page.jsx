@@ -107,6 +107,22 @@ function HomePage() {
       img: 'https://i.ibb.co/gw2mZ1q/rancho-market.jpg',
       alt: 'Descripción de la imagen 3',
     },
+    {
+      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/415218646_122110819544152066_5851253320341265654_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NatxLH3yjCAQ7kNvgFoYzmi&_nc_ht=scontent.fccp1-1.fna&oh=00_AYAKgJ8NmKjQVgjdsZ2EjvnFLZ_nxO5WjnvzsNT_05Q42w&oe=66A1C796',
+      alt: 'Descripción de la imagen 3',
+    },
+    {
+      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/412642871_122105647142152066_368086353644275552_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NoUcrbwHybYQ7kNvgETG9GN&_nc_ht=scontent.fccp1-1.fna&oh=00_AYAzaa4Orw_485ur4MQXL6kIxqbMzigspnp2uMcWKCW1VA&oe=66A1BF14',
+      alt: 'Descripción de la imagen 3',
+    },
+    {
+      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/414697742_122110852634152066_2690177801248076728_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wmro7BbqeSgQ7kNvgH4DhxA&_nc_ht=scontent.fccp1-1.fna&oh=00_AYD1Nvj4MO-7nrU213RQpuzqNYCSncQRaIEN4ae9TzS6hg&oe=66A1BEAD',
+      alt: 'Descripción de la imagen 3',
+    },
+    {
+      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/414722354_122110863932152066_9043319329931760251_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=427iBoGKF8MQ7kNvgFEuVYt&_nc_ht=scontent.fccp1-1.fna&oh=00_AYAjn9_NMFlXWsfJHtPXdTAwvGCkAPhp4F_3Ud7vU0Pw8A&oe=66A1D5B7',
+      alt: 'Descripción de la imagen 3',
+    },
   ];
 
   const handleOpenModal = (producto) => {
