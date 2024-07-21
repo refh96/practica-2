@@ -41,7 +41,7 @@ const Contactos = () => {
           Instagram: <a href="https://instagram.com/rancho_market" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none' }}>rancho_market</a>
         </Typography>
         <Typography variant="body1">
-          Correo: <a href="mailto:info@rancho-market.com" style={{ color: '#007bff', textDecoration: 'none' }}>info@rancho-market.com</a>
+          Correo: <a href="mailto:info@ranchomarket.com" style={{ color: '#007bff', textDecoration: 'none' }}>info@rancho-market.com</a>
         </Typography>
       </Box>
       <Footer />
