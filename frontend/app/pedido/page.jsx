@@ -86,7 +86,7 @@ function PedidoPage() {
 
     // Opcionalmente, también puedes enviar los datos al backend si necesitas guardar el pedido
     try {
-      await axios.post('http://159.223.114.118:3333/orders', {
+      await axios.post('https://www.ranchomarket.site/orders', {
         pedido,
         address,
         pickupDetails,

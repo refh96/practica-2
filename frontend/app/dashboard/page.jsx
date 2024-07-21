@@ -80,7 +80,7 @@ function Dashboard() {
     const normalizedCategory = normalizeCategory(product.categoria);
 
     try {
-      const res = await axios.post("http://159.223.114.118:3333/productos", {
+      const res = await axios.post("https://www.ranchomarket.site/productos", {
         ...product,
         categoria: normalizedCategory
       });
@@ -106,7 +106,7 @@ function Dashboard() {
       const formData = new FormData();
       formData.append('avatar', file);
 
-      await axios.post(`http://159.223.114.118:3333/cargar_foto/${productId}`, formData, {
+      await axios.post(`https://www.ranchomarket.site/cargar_foto/${productId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -135,10 +135,10 @@ function Dashboard() {
   const fetchProducts = async () => {
     try {
       const [perro, gato, otros, medicamentos] = await Promise.all([
-        axios.get("http://159.223.114.118:3333/productos?txtBuscar=perro"),
-        axios.get("http://159.223.114.118:3333/productos?txtBuscar=gato"),
-        axios.get("http://159.223.114.118:3333/productos?txtBuscar=otros"),
-        axios.get("http://159.223.114.118:3333/productos?txtBuscar=medicamentos"),
+        axios.get("https://www.ranchomarket.site/productos?txtBuscar=perro"),
+        axios.get("https://www.ranchomarket.site/productos?txtBuscar=gato"),
+        axios.get("https://www.ranchomarket.site/productos?txtBuscar=otros"),
+        axios.get("https://www.ranchomarket.site/productos?txtBuscar=medicamentos"),
       ]);
 
       setProducts({
@@ -164,7 +164,7 @@ function Dashboard() {
     }
   
     try {
-      await axios.delete(`http://159.223.114.118:3333/productos/${productId}`);
+      await axios.delete(`https://www.ranchomarket.site/productos/${productId}`);
       setProducts(prevProducts =>
         Object.fromEntries(
           Object.entries(prevProducts).map(([key, prods]) =>
@@ -255,7 +255,7 @@ function Dashboard() {
                       Precio: ${producto.precio}
                     </Typography>
                     <Image
-                      src={`http://159.223.114.118:3333/fotografias/${producto.url_foto || `${producto.id}.jpg`}`}
+                      src={`https://www.ranchomarket.site/fotografias/${producto.url_foto || `${producto.id}.jpg`}`}
                       alt={`Imagen de ${producto.nombre_producto}`}
                       width={150}
                       height={150}

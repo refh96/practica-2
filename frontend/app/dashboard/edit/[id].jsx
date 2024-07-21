@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { Container, Typography, TextField, Stack, Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-const API_URL = 'http://159.223.114.118:3333/productos';
+const API_URL = 'https://www.ranchomarket.site/productos';
 
 export const getServerSideProps = async (context) => {
   const { id } = context.query;

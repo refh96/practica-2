@@ -3,9 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '159.223.114.118',
-        port: '3333',
+        protocol: 'https',
+        hostname: 'www.ranchomarket.site',
+        port: '',
         pathname: '/fotografias/**',
       },
     ],

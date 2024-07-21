@@ -26,7 +26,7 @@ function HomePage() {
   useEffect(() => {
     async function fetchProductos() {
       try {
-        const response = await axios.get('http://159.223.114.118:3333/productos?txtBuscar=perro');
+        const response = await axios.get('https://www.ranchomarket.site/productos?txtBuscar=perro');
         if (response.status === 200) {
           setProductos(response.data);
         } else {
@@ -41,7 +41,7 @@ function HomePage() {
 
     async function fetchProductos1() {
       try {
-        const response = await axios.get('http://159.223.114.118:3333/productos?txtBuscar=gato');
+        const response = await axios.get('https://www.ranchomarket.site/productos?txtBuscar=gato');
         if (response.status === 200) {
           setProductos1(response.data);
         } else {
@@ -56,7 +56,7 @@ function HomePage() {
 
     async function fetchProductos2() {
       try {
-        const response = await axios.get('http://159.223.114.118:3333/productos?txtBuscar=otros');
+        const response = await axios.get('https://www.ranchomarket.site/productos?txtBuscar=otros');
         if (response.status === 200) {
           setProductos2(response.data);
         } else {
@@ -71,7 +71,7 @@ function HomePage() {
 
     async function fetchProductos3() {
       try {
-        const response = await axios.get('http://159.223.114.118:3333/productos?txtBuscar=medicamentos');
+        const response = await axios.get('https://www.ranchomarket.site/productos?txtBuscar=medicamentos');
         if (response.status === 200) {
           setProductos3(response.data);
         } else {
@@ -204,7 +204,7 @@ function HomePage() {
                     <p>{producto.description}</p>
                     <p>Precio: {producto.precio}</p>
                     <Image 
-                      src={`http://159.223.114.118:3333/fotografias/${producto.id}.jpg`} 
+                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
                       alt={`Imagen de ${producto.nombre_producto}`} 
                       width={150} 
                       height={150} 
@@ -226,7 +226,7 @@ function HomePage() {
                     <p>{producto.description}</p>
                     <p>Precio: {producto.precio}</p>
                     <Image 
-                      src={`http://159.223.114.118:3333/fotografias/${producto.id}.jpg`} 
+                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
                       alt={`Imagen de ${producto.nombre_producto}`} 
                       width={150} 
                       height={150} 
@@ -248,7 +248,7 @@ function HomePage() {
                     <p>{producto.description}</p>
                     <p>Precio: {producto.precio}</p>
                     <Image 
-                      src={`http://159.223.114.118:3333/fotografias/${producto.id}.jpg`} 
+                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
                       alt={`Imagen de ${producto.nombre_producto}`} 
                       width={150} 
                       height={150} 
@@ -270,7 +270,7 @@ function HomePage() {
                     <p>{producto.description}</p>
                     <p>Precio: {producto.precio}</p>
                     <Image 
-                      src={`http://159.223.114.118:3333/fotografias/${producto.id}.jpg`} 
+                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
                       alt={`Imagen de ${producto.nombre_producto}`} 
                       width={150} 
                       height={150} 
