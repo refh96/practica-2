@@ -1,83 +1,105 @@
-'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { Button, Container, Typography, TextField, Stack, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
+import { Container, Typography, TextField, Stack, Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const API_URL = 'http://159.223.114.118:3333/productos';
 
-const getProducto = async (id) => {
-  const response = await axios.get(API_URL + '/' + context.query.id)
-  return response
-}
-
-export const getServerSideProps =  async (context) => {
-  const response = await getProducto(context.query.id)
-  return {
-    props: {
-      producto: response.data
-    }
+export const getServerSideProps = async (context) => {
+  const { id } = context.query;
+  try {
+    const response = await axios.get(`${API_URL}/${id}`);
+    return {
+      props: {
+        producto: response.data
+      }
+    };
+  } catch (error) {
+    console.error('Error al obtener el producto:', error);
+    return {
+      props: {
+        producto: null
+      }
+    };
   }
-}
+};
 
-const editar = ({producto}) => {
-  
-  const router = useRouter()
+const EditarProducto = ({ producto }) => {
+  const router = useRouter();
+  const [productData, setProductData] = useState(producto);
 
-  const [producto2, setProducto] = useState(producto)
-
-  const updateProducto = async (producto) =>{
-    const response = await axios.put(API_URL + '/' + context.query.id)
-    return response
-  }
+  useEffect(() => {
+    setProductData(producto);
+  }, [producto]);
 
   const handleChange = (e) => {
-    setProducto ({
-      ...producto2,
+    setProductData({
+      ...productData,
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
-  console.log(producto2)
+  const updateProduct = async (data) => {
+    try {
+      await axios.put(`${API_URL}/${router.query.id}`, data);
+      alert('Producto editado exitosamente');
+      router.push('/list'); // Redirigir a la lista de productos
+    } catch (error) {
+      alert('Error al editar el producto: ' + error.message);
+    }
+  };
 
-  const submitProducto = (e) => {
-    
-    updateProducto(producto2).then(res => {
-      console.log('producto modificado')
-      router.push('../page')
-    })
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateProduct(productData);
+  };
 
   return (
-    <Container maxW="container.xl" mt={10}>
-      <Heading size="2xl" textAlign={"center"}>Editar producto: {producto2.nombre_producto}</Heading>
-      <Stack spacing={4} mt ={10}>
-        <FormControl id = 'nombre'>
-          <FormLabel>Nombre producto</FormLabel>
-          <Input type="text" placeholder="Nombre" name = "nombre" onChange={handleChange} value = {producto2.nombre_producto}/>
-        </FormControl>
-        <FormControl id = 'description'>
-          <FormLabel>descripcion</FormLabel>
-          <Input type="text" placeholder="description" name = "description" onChange={handleChange} value = {producto2.description}/>
-        </FormControl>
-        <FormControl id = 'categoria'>
-          <Select name = 'categoria' onChange={handleChange} value = {arrendatario2.categoria}>
-            <option value='efectivo'>efectivo</option>
-            <option value='transferencia'>transferencia</option>
-            <option value='tarjeta'>tarjeta</option>
+    <Container maxWidth="md" sx={{ mt: 10 }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        Editar Producto
+      </Typography>
+      <Stack spacing={3} mt={3}>
+        <TextField
+          label="Nombre del Producto"
+          name="nombre_producto"
+          value={productData.nombre_producto}
+          onChange={handleChange}
+          fullWidth
+        />
+        <TextField
+          label="Descripción"
+          name="description"
+          value={productData.description}
+          onChange={handleChange}
+          fullWidth
+        />
+        <FormControl fullWidth>
+          <InputLabel>Categoría</InputLabel>
+          <Select
+            name="categoria"
+            value={productData.categoria}
+            onChange={handleChange}
+          >
+            <MenuItem value="gato">Gato</MenuItem>
+            <MenuItem value="perro">Perro</MenuItem>
+            {/* Agrega más categorías según sea necesario */}
           </Select>
         </FormControl>
-        <FormControl id = 'precio'>
-          <FormLabel>precio</FormLabel>
-          <InputGroup>
-            <InputLeftAddon children = '$'></InputLeftAddon>
-            <Input type="number" placeholder="precio" name = "precio" onChange={handleChange} value = {producto2.precio}/>
-          </InputGroup>
-        </FormControl>
+        <TextField
+          label="Precio"
+          name="precio"
+          type="number"
+          value={productData.precio}
+          onChange={handleChange}
+          fullWidth
+        />
       </Stack>
-      <Button colorScheme='blue' mt = {10} mb = {10} onClick={() =>{submitProducto(); handleSubmit()}}>Modificar</Button>
+      <Button variant="contained" color="primary" sx={{ mt: 4 }} onClick={handleSubmit}>
+        Modificar
+      </Button>
     </Container>
-  )
+  );
 };
 
 export default EditarProducto;
