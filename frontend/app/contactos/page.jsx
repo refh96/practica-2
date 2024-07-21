@@ -32,7 +32,7 @@ const Contactos = () => {
           Contáctenos
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: 1 }}>
-          WhatsApp: <a href="tel:+56911111111" style={{ color: '#007bff', textDecoration: 'none' }}>+56911111111</a>
+          WhatsApp: <a href="tel:+56983219636" style={{ color: '#007bff', textDecoration: 'none' }}>+56983219636</a>
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: 1 }}>
           Facebook: <a href="https://facebook.com/RanchoMarket" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none' }}>Rancho Market</a>

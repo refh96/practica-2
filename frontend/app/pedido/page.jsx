@@ -78,8 +78,7 @@ function PedidoPage() {
       mensaje += `Dirección de Entrega: ${address}\n`;
     }
 
-    // El número de WhatsApp y el texto del mensaje
-    const numeroWhatsApp = '56958994306'; // Reemplaza con el número de WhatsApp del dueño
+    const numeroWhatsApp = '56983219636';
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
     // Abrir el enlace en una nueva ventana
@@ -87,7 +86,7 @@ function PedidoPage() {
 
     // Opcionalmente, también puedes enviar los datos al backend si necesitas guardar el pedido
     try {
-      await axios.post('http://127.0.0.1:3333/orders', {
+      await axios.post('http://159.223.114.118:3333/orders', {
         pedido,
         address,
         pickupDetails,
