@@ -92,7 +92,7 @@ function HomePage() {
 
   const items = [
     {
-      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/418103153_122115255056152066_894725775225912553_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gqbUTNwTuFUQ7kNvgFoBPzK&_nc_ht=scontent.fccp1-1.fna&oh=00_AYDHCq0foDnOYiBitDkUZNUz4e4Dhgsk59JeoBT1Yyy_hg&oe=669E0447',
+      img: 'https://i.ibb.co/5B8nLqf/imagen-1.jpg',
       alt: 'Descripción de la imagen 1',
     },
     {
@@ -100,28 +100,24 @@ function HomePage() {
       alt: 'Descripción de la imagen 2',
     },
     {
-      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/415200197_122110827104152066_5595028914232753332_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=KvqJ4V-aSrYQ7kNvgGxZcMv&_nc_ht=scontent.fccp1-1.fna&oh=00_AYCgiFRt9LhBVUVyNfvoxM41Rf8VpMUh7ykJv3vWWolCmQ&oe=669DED91',
+      img: 'https://i.ibb.co/hyVWDvn/imagen-2.jpg',
       alt: 'Descripción de la imagen 3',
     },
     {
       img: 'https://i.ibb.co/gw2mZ1q/rancho-market.jpg',
-      alt: 'Descripción de la imagen 3',
+      alt: 'Descripción de la imagen 4',
     },
     {
-      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/415218646_122110819544152066_5851253320341265654_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NatxLH3yjCAQ7kNvgFoYzmi&_nc_ht=scontent.fccp1-1.fna&oh=00_AYAKgJ8NmKjQVgjdsZ2EjvnFLZ_nxO5WjnvzsNT_05Q42w&oe=66A1C796',
-      alt: 'Descripción de la imagen 3',
+      img: 'https://i.ibb.co/SQ7Z7YD/imagen-3.jpg',
+      alt: 'Descripción de la imagen 5',
     },
     {
-      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/412642871_122105647142152066_368086353644275552_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NoUcrbwHybYQ7kNvgETG9GN&_nc_ht=scontent.fccp1-1.fna&oh=00_AYAzaa4Orw_485ur4MQXL6kIxqbMzigspnp2uMcWKCW1VA&oe=66A1BF14',
-      alt: 'Descripción de la imagen 3',
+      img: 'https://i.ibb.co/k0yhK3g/imagen-4.jpg',
+      alt: 'Descripción de la imagen 6',
     },
     {
-      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/414697742_122110852634152066_2690177801248076728_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wmro7BbqeSgQ7kNvgH4DhxA&_nc_ht=scontent.fccp1-1.fna&oh=00_AYD1Nvj4MO-7nrU213RQpuzqNYCSncQRaIEN4ae9TzS6hg&oe=66A1BEAD',
-      alt: 'Descripción de la imagen 3',
-    },
-    {
-      img: 'https://scontent.fccp1-1.fna.fbcdn.net/v/t39.30808-6/414722354_122110863932152066_9043319329931760251_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=427iBoGKF8MQ7kNvgFEuVYt&_nc_ht=scontent.fccp1-1.fna&oh=00_AYAjn9_NMFlXWsfJHtPXdTAwvGCkAPhp4F_3Ud7vU0Pw8A&oe=66A1D5B7',
-      alt: 'Descripción de la imagen 3',
+      img: 'https://i.ibb.co/3hZSYkQ/imagen-5.jpg',
+      alt: 'Descripción de la imagen 7',
     },
   ];
 
