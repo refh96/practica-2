@@ -35,10 +35,10 @@ const Contactos = () => {
           WhatsApp: <a href="tel:+56983219636" style={{ color: '#007bff', textDecoration: 'none' }}>+56983219636</a>
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: 1 }}>
-          Facebook: <a href="https://facebook.com/RanchoMarket" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none' }}>Rancho Market</a>
+          Facebook: <a href="https://www.facebook.com/profile.php?id=61554562001480" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none' }}>Rancho Market</a>
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: 1 }}>
-          Instagram: <a href="https://instagram.com/rancho_market" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none' }}>rancho_market</a>
+          Instagram: <a href="https://www.instagram.com/rancho_market_/" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none' }}>rancho_market</a>
         </Typography>
         <Typography variant="body1">
           Correo: <a href="mailto:info@ranchomarket.com" style={{ color: '#007bff', textDecoration: 'none' }}>info@rancho-market.com</a>
