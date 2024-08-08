@@ -133,11 +133,17 @@ function HomePage() {
   };
 
   const handleAddToOrder = () => {
+    if (quantity <= 0) {
+      alert('La cantidad debe ser mayor a 0.');
+      return;
+    }
+  
     const currentOrder = JSON.parse(sessionStorage.getItem('pedido')) || [];
     const updatedOrder = [...currentOrder, { ...selectedProduct, quantity }];
     sessionStorage.setItem('pedido', JSON.stringify(updatedOrder));
     handleCloseModal();
   };
+  
   
   return (
     <div 
