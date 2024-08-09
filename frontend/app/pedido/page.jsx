@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import AddressAutocomplete from './AddressAutocomplete'; // Asegúrate de que la ruta sea correcta
 
 function PedidoPage() {
+  const [emailTouched, setEmailTouched] = useState(false);
   const [pedido, setPedido] = useState([]);
   const [address, setAddress] = useState('');
   const [pickupDetails, setPickupDetails] = useState({
@@ -115,7 +116,10 @@ function PedidoPage() {
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setPickupDetails({ ...pickupDetails, email: value });
+    setEmailTouched(true); // Marca el campo como tocado
   };
+
+
   const validateEmail = (email) => {
     // Expresión regular para validar el formato del correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -126,151 +130,157 @@ function PedidoPage() {
 
   return (
     <div>
-            <Header />
+      <Header />
 
-    <Container>
-      <Typography variant="h4" align="center" margin="20px">
-        Resumen del Pedido
-      </Typography>
-      {pedido.length > 0 ? (
-        <Box>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6">Productos</Typography>
-              {pedido.map((item, index) => (
-                <Paper key={index} style={{ padding: '10px', marginBottom: '10px' }}>
-                  <Typography>{item.nombre_producto}</Typography>
-                  <Typography>Cantidad: {item.quantity}</Typography>
-                  <Typography>Precio: {item.precio}</Typography>
-                </Paper>
-              ))}
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6">Detalles del Pedido</Typography>
-              <Button variant="contained" color="secondary" onClick={handleDeleteOrder}>
-                Eliminar Pedido
-              </Button>
-              <Button variant="contained" color="primary" onClick={handleClearOrder}>
-                Limpiar Pedido
-              </Button>
-              <Button variant="contained" color="primary" onClick={handleSubmitOrder}>
-                Enviar Pedido
-              </Button>
-              <Box marginTop="20px">
-                {isPickup ? (
-                  <Box>
-                    <TextField
-                      label="Fecha"
-                      type="date"
-                      fullWidth
-                      InputProps={{ inputProps: { min: today } }}
-                      value={pickupDetails.date}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, date: e.target.value })}
-                    />
-                    <TextField
-                      label="Hora"
-                      type="time"
-                      fullWidth
-                      value={pickupDetails.time}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, time: e.target.value })}
-                    />
-                    <TextField
-                      label="Nombre"
-                      fullWidth
-                      value={pickupDetails.name}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, name: e.target.value })}
-                    />
-                    <TextField
-                      label="Teléfono"
-                      fullWidth
-                      value={pickupDetails.phone}
-                      onChange={handlePhoneChange}
-                      inputProps={{ pattern: "[0-9]*" }}
-                    />
-                    <TextField
-                      label="Correo Electrónico"
-                      fullWidth
-                      value={pickupDetails.email}
-                      onChange={handleEmailChange}
-                      type="email"
-                      error={!validateEmail(pickupDetails.email)}
-                      helperText={!validateEmail(pickupDetails.email) ? 'Correo electrónico inválido' : ''}
-                    />
-                    <FormControl fullWidth>
-                      <InputLabel>Método de Pago</InputLabel>
-                      <Select
-                        value={pickupDetails.paymentMethod}
-                        onChange={(e) => setPickupDetails({ ...pickupDetails, paymentMethod: e.target.value })}
-                      >
-                        <MenuItem value="efectivo">Efectivo</MenuItem>
-                        <MenuItem value="transferencia">Transferencia</MenuItem>
-                        <MenuItem value="tarjeta">Tarjeta</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Box>
-                ) : (
-                  <Box>
-                    <AddressAutocomplete onAddressSelect={handleAddressSelect} />
-                    <TextField
-                      label="Fecha"
-                      type="date"
-                      fullWidth
-                      InputProps={{ inputProps: { min: today } }}
-                      value={pickupDetails.date}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, date: e.target.value })}
-                    />
-                    <TextField
-                      label="Hora"
-                      type="time"
-                      fullWidth
-                      value={pickupDetails.time}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, time: e.target.value })}
-                    />
-                    <TextField
-                      label="Nombre"
-                      fullWidth
-                      value={pickupDetails.name}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, name: e.target.value })}
-                    />
-                    <TextField
-                      label="Teléfono"
-                      fullWidth
-                      value={pickupDetails.phone}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, phone: e.target.value })}
-                    />
-                    <TextField
-                      label="Correo Electrónico"
-                      fullWidth
-                      value={pickupDetails.email}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, email: e.target.value })}
-                    />
-                    <FormControl fullWidth>
-                      <InputLabel>Método de Pago</InputLabel>
-                      <Select
-                        value={pickupDetails.paymentMethod}
-                        onChange={(e) => setPickupDetails({ ...pickupDetails, paymentMethod: e.target.value })}
-                      >
-                        <MenuItem value="efectivo">Efectivo</MenuItem>
-                        <MenuItem value="transferencia">Transferencia</MenuItem>
-                        <MenuItem value="tarjeta">Tarjeta</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Box>
-                )}
-                <Button variant="contained" color="primary" onClick={() => setIsPickup(!isPickup)}>
-                  {isPickup ? 'Cambiar a Domicilio' : 'Cambiar a Retiro'}
-                </Button>
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
-      ) : (
-        <Typography variant="h6" align="center">
-          No hay productos en el pedido.
+      <Container>
+        <Typography variant="h4" align="center" margin="20px">
+          Resumen del Pedido
         </Typography>
-      )}
-    </Container>
-    <Footer />
+        {pedido.length > 0 ? (
+          <Box>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6">Productos</Typography>
+                {pedido.map((item, index) => (
+                  <Paper key={index} style={{ padding: '10px', marginBottom: '10px' }}>
+                    <Typography>{item.nombre_producto}</Typography>
+                    <Typography>Cantidad: {item.quantity}</Typography>
+                    <Typography>Precio: {item.precio}</Typography>
+                  </Paper>
+                ))}
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6">Detalles del Pedido</Typography>
+                <Button variant="contained" color="secondary" onClick={handleDeleteOrder}>
+                  Eliminar Pedido
+                </Button>
+                <Button variant="contained" color="primary" onClick={handleClearOrder}>
+                  Limpiar Pedido
+                </Button>
+                <Button variant="contained" color="primary" onClick={handleSubmitOrder}>
+                  Enviar Pedido
+                </Button>
+                <Box marginTop="20px">
+                  {isPickup ? (
+                    <Box>
+                      <TextField
+                        label="Fecha"
+                        type="date"
+                        fullWidth
+                        InputLabelProps={{ shrink: true }}
+                        InputProps={{ inputProps: { min: today } }}
+                        value={pickupDetails.date}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, date: e.target.value })}
+                      />
+                      <TextField
+                        label="Hora"
+                        type="time"
+                        fullWidth
+                        InputLabelProps={{ shrink: true }}
+                        value={pickupDetails.time}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, time: e.target.value })}
+                      />
+                      <TextField
+                        label="Nombre"
+                        fullWidth
+                        InputLabelProps={{ shrink: true }}
+                        value={pickupDetails.name}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, name: e.target.value })}
+                      />
+                      <TextField
+                        label="Teléfono"
+                        fullWidth
+                        InputLabelProps={{ shrink: true }}
+                        value={pickupDetails.phone}
+                        onChange={handlePhoneChange}
+                        inputProps={{ pattern: "[0-9]*" }}
+                      />
+                      <TextField
+                        label="Correo Electrónico"
+                        fullWidth
+                        InputLabelProps={{ shrink: true }}
+                        value={pickupDetails.email}
+                        onChange={handleEmailChange}
+                        onBlur={() => setEmailTouched(true)} // Marca el campo como tocado cuando pierde el foco
+                        type="email"
+                        error={emailTouched && !validateEmail(pickupDetails.email)}
+                        helperText={emailTouched && !validateEmail(pickupDetails.email) ? 'Correo electrónico inválido' : ''}
+                      />
+                      <FormControl fullWidth>
+                        <InputLabel>Método de Pago</InputLabel>
+                        <Select
+                          value={pickupDetails.paymentMethod}
+                          onChange={(e) => setPickupDetails({ ...pickupDetails, paymentMethod: e.target.value })}
+                        >
+                          <MenuItem value="efectivo">Efectivo</MenuItem>
+                          <MenuItem value="transferencia">Transferencia</MenuItem>
+                          <MenuItem value="tarjeta">Tarjeta</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
+                  ) : (
+                    <Box>
+                      <AddressAutocomplete onAddressSelect={handleAddressSelect} />
+                      <TextField
+                        label="Fecha"
+                        type="date"
+                        fullWidth
+                        InputProps={{ inputProps: { min: today } }}
+                        value={pickupDetails.date}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, date: e.target.value })}
+                      />
+                      <TextField
+                        label="Hora"
+                        type="time"
+                        fullWidth
+                        value={pickupDetails.time}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, time: e.target.value })}
+                      />
+                      <TextField
+                        label="Nombre"
+                        fullWidth
+                        value={pickupDetails.name}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, name: e.target.value })}
+                      />
+                      <TextField
+                        label="Teléfono"
+                        fullWidth
+                        value={pickupDetails.phone}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, phone: e.target.value })}
+                      />
+                      <TextField
+                        label="Correo Electrónico"
+                        fullWidth
+                        value={pickupDetails.email}
+                        onChange={(e) => setPickupDetails({ ...pickupDetails, email: e.target.value })}
+                      />
+                      <FormControl fullWidth>
+                        <InputLabel>Método de Pago</InputLabel>
+                        <Select
+                          value={pickupDetails.paymentMethod}
+                          onChange={(e) => setPickupDetails({ ...pickupDetails, paymentMethod: e.target.value })}
+                        >
+                          <MenuItem value="efectivo">Efectivo</MenuItem>
+                          <MenuItem value="transferencia">Transferencia</MenuItem>
+                          <MenuItem value="tarjeta">Tarjeta</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
+                  )}
+                  <Button variant="contained" color="primary" onClick={() => setIsPickup(!isPickup)}>
+                    {isPickup ? 'Cambiar a Domicilio' : 'Cambiar a Retiro'}
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+        ) : (
+          <Typography variant="h6" align="center">
+            No hay productos en el pedido.
+          </Typography>
+        )}
+      </Container>
+      <Footer />
     </div>
   );
 }
