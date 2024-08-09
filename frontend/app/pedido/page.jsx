@@ -106,6 +106,22 @@ function PedidoPage() {
     setAddress(place.formatted_address); // Actualiza el estado de la dirección
   };
 
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    // Filtrar solo números
+    const filteredValue = value.replace(/[^0-9]/g, '');
+    setPickupDetails({ ...pickupDetails, phone: filteredValue });
+  };
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setPickupDetails({ ...pickupDetails, email: value });
+  };
+  const validateEmail = (email) => {
+    // Expresión regular para validar el formato del correo electrónico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const today = new Date().toISOString().split('T')[0];
 
   return (
@@ -168,13 +184,17 @@ function PedidoPage() {
                       label="Teléfono"
                       fullWidth
                       value={pickupDetails.phone}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, phone: e.target.value })}
+                      onChange={handlePhoneChange}
+                      inputProps={{ pattern: "[0-9]*" }}
                     />
                     <TextField
                       label="Correo Electrónico"
                       fullWidth
                       value={pickupDetails.email}
-                      onChange={(e) => setPickupDetails({ ...pickupDetails, email: e.target.value })}
+                      onChange={handleEmailChange}
+                      type="email"
+                      error={!validateEmail(pickupDetails.email)}
+                      helperText={!validateEmail(pickupDetails.email) ? 'Correo electrónico inválido' : ''}
                     />
                     <FormControl fullWidth>
                       <InputLabel>Método de Pago</InputLabel>

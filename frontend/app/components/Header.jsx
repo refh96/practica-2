@@ -40,7 +40,6 @@ const Header = () => {
     { label: 'Inicio', link: '/' },
     { label: 'Pedido', link: '/pedido' },
     { label: 'Contacto', link: '/contactos' },
-    { label: 'Login', link: '/login' },
   ];
 
   const handleNavigation = (link) => {
