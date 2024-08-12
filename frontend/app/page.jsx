@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/joy/Box';
 import Carousel from 'react-material-ui-carousel';
-import { Paper, Typography, Grid, Container, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, IconButton } from '@mui/material';
+import { Paper, Typography, Grid, Container, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, IconButton, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import Image from 'next/image'; // Importa el componente Image de Next.js
+import Image from 'next/image';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function HomePage() {
   const [productos, setProductos] = useState([]);
@@ -144,7 +145,6 @@ function HomePage() {
     handleCloseModal();
   };
   
-  
   return (
     <div 
       style={{ 
@@ -198,92 +198,108 @@ function HomePage() {
         <Container>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={3}>
-              <div style={{ textAlign:'center', padding: '0 20px', color: 'black', backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '10px' }}>
-                <h2>Perros</h2>
-                {productos.map((producto) => (
-                  <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px' }}>
-                    <h3>{producto.nombre_producto}</h3>
-                    <p>{producto.description}</p>
-                    <p>Precio: {producto.precio}</p>
-                    <Image 
-                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
-                      alt={`Imagen de ${producto.nombre_producto}`} 
-                      width={150} 
-                      height={150} 
-                      style={{ marginBottom: '10px' }}
-                    />
-                    <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
-                      Agregar al Pedido
-                    </Button>
-                  </div>
-                ))}
-              </div>
+              <Accordion defaultExpanded>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6" align="center">Perros</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {productos.map((producto) => (
+                    <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px', textAlign: 'center' }}>
+                      <h3>{producto.nombre_producto}</h3>
+                      <p>{producto.description}</p>
+                      <p>Precio: {producto.precio}</p>
+                      <Image 
+                        src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
+                        alt={`Imagen de ${producto.nombre_producto}`} 
+                        width={150} 
+                        height={150} 
+                        style={{ marginBottom: '10px' }}
+                      />
+                      <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
+                        Agregar al Pedido
+                      </Button>
+                    </div>
+                  ))}
+                </AccordionDetails>
+              </Accordion>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <div style={{ textAlign:'center', padding: '0 20px', color: 'black', backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '10px' }}>
-                <h2>Gatos</h2>
-                {productos1.map((producto) => (
-                  <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px' }}>
-                    <h3>{producto.nombre_producto}</h3>
-                    <p>{producto.description}</p>
-                    <p>Precio: {producto.precio}</p>
-                    <Image 
-                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
-                      alt={`Imagen de ${producto.nombre_producto}`} 
-                      width={150} 
-                      height={150} 
-                      style={{ marginBottom: '10px' }}
-                    />
-                    <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
-                      Agregar al Pedido
-                    </Button>
-                  </div>
-                ))}
-              </div>
+              <Accordion defaultExpanded>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6" align="center">Gatos</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {productos1.map((producto) => (
+                    <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px', textAlign: 'center' }}>
+                      <h3>{producto.nombre_producto}</h3>
+                      <p>{producto.description}</p>
+                      <p>Precio: {producto.precio}</p>
+                      <Image 
+                        src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
+                        alt={`Imagen de ${producto.nombre_producto}`} 
+                        width={150} 
+                        height={150} 
+                        style={{ marginBottom: '10px' }}
+                      />
+                      <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
+                        Agregar al Pedido
+                      </Button>
+                    </div>
+                  ))}
+                </AccordionDetails>
+              </Accordion>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <div style={{ textAlign:'center', padding: '0 20px', color: 'black', backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '10px' }}>
-                <h2>Otros</h2>
-                {productos2.map((producto) => (
-                  <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px' }}>
-                    <h3>{producto.nombre_producto}</h3>
-                    <p>{producto.description}</p>
-                    <p>Precio: {producto.precio}</p>
-                    <Image 
-                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
-                      alt={`Imagen de ${producto.nombre_producto}`} 
-                      width={150} 
-                      height={150} 
-                      style={{ marginBottom: '10px' }}
-                    />
-                    <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
-                      Agregar al Pedido
-                    </Button>
-                  </div>
-                ))}
-              </div>
+              <Accordion defaultExpanded>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6" align="center">Otros</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {productos2.map((producto) => (
+                    <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px', textAlign: 'center' }}>
+                      <h3>{producto.nombre_producto}</h3>
+                      <p>{producto.description}</p>
+                      <p>Precio: {producto.precio}</p>
+                      <Image 
+                        src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
+                        alt={`Imagen de ${producto.nombre_producto}`} 
+                        width={150} 
+                        height={150} 
+                        style={{ marginBottom: '10px' }}
+                      />
+                      <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
+                        Agregar al Pedido
+                      </Button>
+                    </div>
+                  ))}
+                </AccordionDetails>
+              </Accordion>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <div style={{ textAlign:'center', padding: '0 20px', color: 'black', backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '10px' }}>
-                <h2>Medicamentos</h2>
-                {productos3.map((producto) => (
-                  <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px' }}>
-                    <h3>{producto.nombre_producto}</h3>
-                    <p>{producto.description}</p>
-                    <p>Precio: {producto.precio}</p>
-                    <Image 
-                      src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
-                      alt={`Imagen de ${producto.nombre_producto}`} 
-                      width={150} 
-                      height={150} 
-                      style={{ marginBottom: '10px' }}
-                    />
-                    <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
-                      Agregar al Pedido
-                    </Button>
-                  </div>
-                ))}
-              </div>
+              <Accordion defaultExpanded>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6" align="center">Medicamentos</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {productos3.map((producto) => (
+                    <div key={producto.id} style={{ marginBottom: '20px', border: '1px solid #ccc', borderRadius: '8px', padding: '10px', textAlign: 'center' }}>
+                      <h3>{producto.nombre_producto}</h3>
+                      <p>{producto.description}</p>
+                      <p>Precio: {producto.precio}</p>
+                      <Image 
+                        src={`https://www.ranchomarket.site/fotografias/${producto.id}.jpg`} 
+                        alt={`Imagen de ${producto.nombre_producto}`} 
+                        width={150} 
+                        height={150} 
+                        style={{ marginBottom: '10px' }}
+                      />
+                      <Button variant="contained" color="primary" onClick={() => handleOpenModal(producto)}>
+                        Agregar al Pedido
+                      </Button>
+                    </div>
+                  ))}
+                </AccordionDetails>
+              </Accordion>
             </Grid>
           </Grid>
         </Container>
@@ -299,6 +315,8 @@ function HomePage() {
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value))}
                   InputProps={{ inputProps: { min: 1 } }}
+                  fullWidth
+                  margin="normal"
                 />
               </>
             )}
@@ -314,20 +332,18 @@ function HomePage() {
         </Dialog>
         <Footer />
         <IconButton
-  style={{
-    position: 'fixed',
-    bottom: 16,
-    right: 16,
-    backgroundColor: '#25D366',
-    color: 'white',
-    zIndex: 1000,
-  }}
-  onClick={() => window.open('https://wa.me/56983219636?text=Hola%2C%20me%20comunico%20desde%20su%20sitio%20web', '_blank')}
->
-  <WhatsAppIcon />
-</IconButton>
-
-
+          style={{
+            position: 'fixed',
+            bottom: 16,
+            right: 16,
+            backgroundColor: '#25D366',
+            color: 'white',
+            zIndex: 1000,
+          }}
+          onClick={() => window.open('https://wa.me/56983219636?text=Hola%2C%20me%20comunico%20desde%20su%20sitio%20web', '_blank')}
+        >
+          <WhatsAppIcon />
+        </IconButton>
       </Box>
     </div>
   );
